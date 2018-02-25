@@ -29,25 +29,24 @@ class InputViewController: UIViewController {
         datePicker.date = task.date
         category.text = task.category
         // Do any additional setup after loading the view.
-    }
+    }       
     
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         try! realm.write{
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text
             self.task.category = self.category.text!
             self.task.date = self.datePicker.date
             self.realm.add(self.task,update:true)
-             setNotification(task: task)
         }
-        
+            setNotification(task: task)
         
         super.viewWillDisappear(animated)
-        
+    }
         func setNotification(task: Task){
             let content = UNMutableNotificationContent()
             if task.title == ""{
@@ -78,7 +77,7 @@ class InputViewController: UIViewController {
                     print("/--------")
                     print(request)
                     print("/--------/")
-                }
+                
             }
             
         }
