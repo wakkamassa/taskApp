@@ -25,9 +25,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.dataSource = self
         seachCategory.delegate = self
         
-        let tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target:self,action:#selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tapGesture)
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
